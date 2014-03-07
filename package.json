@@ -1,0 +1,30 @@
+{
+  "name": "constring",
+  "version": "0.0.1",
+  "description": "Create and parse crypto currency addresses, wallet import formats, etc.",
+  "keywords": [
+    "cryptography",
+    "crypto",
+    "bitcoin",
+    "litecoin",
+    "dogecoin",
+    "currency",
+    "cryptocurrency",
+    "address",
+    "wif"
+  ],
+  "devDependencies": {
+    "mocha": "1.*",
+    "terst": "0.0.2",
+    "binstring": "~0.2.0"
+  },
+  "repository": {
+    "url": "https://github.com/cryptocoinjs/coinstring",
+    "type": "git"
+  },
+  "main": "./lib/coinstring.js",
+  "dependencies": {
+    "bs58": "0.3.x",
+    "crypto-hashing": "~0.2.0"
+  }
+}

@@ -1,0 +1,12 @@
+coinstring
+==========
+
+
+
+
+License
+-------
+
+(MIT License)
+
+
