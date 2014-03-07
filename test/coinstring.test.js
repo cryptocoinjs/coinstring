@@ -105,6 +105,26 @@ describe('coinstring', function() {
       })
     })
   })
+
+  describe('> when input is invalid', function() {
+    it('validate should return false', function() {
+      var address = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS"
+      var wif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
+
+      F (coinstring.validate(0x0, address.toLowerCase()))
+      F (coinstring.validate(0x80, wif.toLowerCase()))
+    })
+  
+    it('decode should throw an exception', function() {
+      var address = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS"
+      var wif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
+
+      THROWS (function() { coinstring.decode(0x0, address.toLowerCase()) })
+      THROWS (function() { coinstring.decode(0x80, wif.toLowerCase()) })
+      THROWS (function() { coinstring.decode(0x1, address) })
+      THROWS (function() { coinstring.decode(0x2, wif) })
+    })
+  })
 })
 
 
