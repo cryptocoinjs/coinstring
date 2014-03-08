@@ -74,7 +74,7 @@ var version = 0x00; //Bitcoin public address
 console.log(coinstring(version, hash160Buf)); // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
 ```
 
-### Convert Private Key to Compressed Bitcoin Wallet Import Format
+#### Convert Private Key to Compressed Bitcoin Wallet Import Format
 
 ```js
 var conv = require('binstring');
@@ -91,7 +91,7 @@ var version = 0x080; //Bitcoin private key
 console.log(coinstring(version, privateKeyHexBuf)); // => KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3
 ```
 
-### Convert hash160 (aka pubkeyhash) to Dogecoin Address
+#### Convert hash160 (aka pubkeyhash) to Dogecoin Address
 
 ```js
 var conv = require('binstring');
