@@ -168,9 +168,8 @@ The following is a table of common crypto currency versions. It may seem a bit u
 <tr><td>Bitcoin Testnet</td><td> 0x6E</td><td> 0xEF</td></tr>
 <tr><td>Bitcoin Testnet Script Hash</td><td> 0xC4</td><td> N/A</td></tr>
 <tr><td>Dogecoin</td><td> 0x1E</td><td> 0x9E</td></tr>
-<tr><td>LItecoin</td><td> 0x30</td><td> 0xB0</td></tr>
+<tr><td>Litecoin</td><td> 0x30</td><td> 0xB0</td></tr>
 <tr><td>Namecoin</td><td> 0x34</td><td> 0xB4</td></tr>
-<tr><td></td></tr>
 </table>
 
 
