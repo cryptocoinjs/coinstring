@@ -125,6 +125,27 @@ describe('coinstring', function() {
       THROWS (function() { coinstring.decode(0x2, wif) })
     })
   })
+
+  describe('> when version is specified', function() {
+    it('coinstring should partially be applied', function() {
+      var btcWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
+      var toBtcWif = coinstring(0x80);
+      EQ (toBtcWif(privateKeyHexBuf), btcWif);
+    })
+
+    it('decode should partially be applied', function() {
+      var btcWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
+      var fromBtcWif = coinstring.decode(0x80);
+      EQ (fromBtcWif(btcWif).toString('hex'), privateKeyHex);
+    })
+
+    it('validate should partially be applied', function() {
+      var address = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS"
+      var btcAddressValidator = coinstring.validate(0x0);
+      T (btcAddressValidator(address));
+      F (btcAddressValidator(address.toUpperCase()));
+    })
+  })
 })
 
 
