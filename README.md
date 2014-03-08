@@ -106,7 +106,7 @@ console.log(coinstring(version, hash160Buf)); // => DAcq9oJpZZAjr56RmF7Y5zmWboZW
 
 
 
-### Functional Goodness
+### Functional Goodies
 
 `coinstring` also has some functional goodies. All functions can be partially applied.
 
