@@ -1,7 +1,7 @@
 {
   "name": "constring",
   "version": "0.0.1",
-  "description": "Create and parse crypto currency addresses, wallet import formats, etc.",
+  "description": "Create and parse crypto currency addresses and wallet import formats.",
   "keywords": [
     "cryptography",
     "crypto",
