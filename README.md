@@ -45,6 +45,7 @@ Validates whether the address string or wallet import format string is valid. Re
 - **str**: A `string` that is either the wallet import format or public address.
 
 
+
 ### Common Examples
 
 #### Convert Private Key to Bitcoin Wallet Import Format
@@ -55,13 +56,123 @@ var coinstring = require('coinstring');
 
 var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
 var privateKeyHexBuf = conv(privateKeyHex, {in: 'hex', out: 'buffer'});
+var version = 0x080; //Bitcoin private key
+
+console.log(coinstring(version, privateKeyHexBuf)); // => 5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD
 ```
+
+#### Convert hash160 (aka pubkeyhash) to Bitcoin Address
+
+```js
+var conv = require('binstring');
+var coinstring = require('coinstring');
+
+var hash160 = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8"; //hash representing uncompressed
+var hash160Buf = conv(hash160, {in: 'hex', out: 'buffer'});
+var version = 0x00; //Bitcoin public address
+
+console.log(coinstring(version, hash160Buf)); // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
+```
+
+### Convert Private Key to Compressed Bitcoin Wallet Import Format
+
+```js
+var conv = require('binstring');
+var coinstring = require('coinstring');
+
+var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+
+//for compressed, append "01"
+privateKeyHex += '01';
+
+var privateKeyHexBuf = conv(privateKeyHex, {in: 'hex', out: 'buffer'});
+var version = 0x080; //Bitcoin private key
+
+console.log(coinstring(version, privateKeyHexBuf)); // => KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3
+```
+
+### Convert hash160 (aka pubkeyhash) to Dogecoin Address
+
+```js
+var conv = require('binstring');
+var coinstring = require('coinstring');
+
+var hash160 = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8"; //hash representing uncompressed
+var hash160Buf = conv(hash160, {in: 'hex', out: 'buffer'});
+var version = 0x1E; //Dogecoin public address
+
+console.log(coinstring(version, hash160Buf)); // => DAcq9oJpZZAjr56RmF7Y5zmWboZWQ4HAsW
+```
+
 
 
 ### Functional Goodness
 
+`coinstring` also has some functional goodies. All functions can be partially applied.
+
+#### Function to Generate Bitcoin Wallet Import Format
+
+```js
+var conv = require('binstring');
+var coinstring = require('coinstring');
+
+var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+var privateKeyHexBuf = conv(privateKeyHex, {in: 'hex', out: 'buffer'});
+var version = 0x080; //Bitcoin private key
+
+var toBtcWif = coinstring(version)
+
+//later in your program
+console.log(toBtcWif(privateKeyHexBuf)); // => 5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD
+```
+
+#### Function to Parse Bitcoin Wallet Import Format
+
+```js
+var conv = require('binstring');
+var coinstring = require('coinstring');
+
+var wif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD";
+var version = 0x080; //Bitcoin private key
+
+var fromBtcWif = coinstring.decode(version)
+
+//later in your program
+console.log(fromBtcWif(wif).toString('hex')); // => 51184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
+```
+
+#### Function to Validate Bitcoin Testnet Addresses
+
+```js
+var conv = require('binstring');
+var coinstring = require('coinstring');
+
+var hash160 = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8"; //hash representing uncompressed
+var hash160Buf = conv(hash160, {in: 'hex', out: 'buffer'});
+var version = 0x6F; //Bitcoin Testnet Address
+
+var testnetAddressValidator = coinstring.validate(version);
+
+console.log(testnetAddressValidator("mkzgubTA5Ahi6BPSkE6MN9pEafRutznkMe")) // => true
+```
+
 
 ### List of Common Crypto Currency Versions
+
+The following is a table of common crypto currency versions. It may seem a bit user unfriendly to have to input the number instead of something like "BTC"; we agree. Another module will be created to address this. In the meantime, use the table below.
+
+<table>
+<tr><th>Crypto Coin</th><th>Public Address</th><th>Private Wallet Import Format</th></tr>
+<tr><td>Bitcoin</td><td> 0x00</td><td> 0x80</td></tr>
+<tr><td>Bitcoin Script Hash</td><td> 0x05</td><td> N/A</td></tr>
+<tr><td>Bitcoin Testnet</td><td> 0x6E</td><td> 0xEF</td></tr>
+<tr><td>Bitcoin Testnet Script Hash</td><td> 0xC4</td><td> N/A</td></tr>
+<tr><td>Dogecoin</td><td> 0x1E</td><td> 0x9E</td></tr>
+<tr><td>LItecoin</td><td> 0x30</td><td> 0xB0</td></tr>
+<tr><td>Namecoin</td><td> 0x34</td><td> 0xB4</td></tr>
+<tr><td></td></tr>
+</table>
+
 
 
 ### Use in the Browser
