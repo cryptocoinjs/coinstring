@@ -3,6 +3,7 @@
 * added browser tests
 * added support for `coinstring()` method to input a type `Array` or `Uint8Array`
 * export `crypto-hashing`, non-standard practice... thoughts?
+* upgraded `crypto-hashing` to `0.3.0`, `ripemd160` now works in the browser
 
 0.0.1 / 2014-03-07
 ------------------

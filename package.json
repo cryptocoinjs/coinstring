@@ -26,6 +26,6 @@
   "main": "./lib/coinstring.js",
   "dependencies": {
     "bs58": "0.3.x",
-    "crypto-hashing": "~0.2.0"
+    "crypto-hashing": "~0.3.0"
   }
 }
