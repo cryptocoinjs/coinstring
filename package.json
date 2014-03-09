@@ -16,7 +16,8 @@
   "devDependencies": {
     "mocha": "1.*",
     "terst": "~0.1.0",
-    "binstring": "~0.2.0"
+    "binstring": "~0.2.0",
+    "mochify": "~0.4.2"
   },
   "repository": {
     "url": "https://github.com/cryptocoinjs/coinstring",
