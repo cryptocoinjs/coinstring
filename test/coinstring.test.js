@@ -43,6 +43,23 @@ describe('coinstring', function() {
       describe('> when private', function() {
         var version = 0x80 //bitcoin private key
 
+        describe('> when input is an array to coinstring', function() {
+          it('should generate the WIF', function() {
+            var arr = conv(privateKeyHex, {in: 'hex', out: 'bytes'});
+            T (Array.isArray(arr));
+            EQ (coinstring(version, arr), wif);
+          })
+        })
+
+        describe('> when input is an Uint8Array to coinstring', function() {
+          it('should generate the WIF', function() {
+            var arr = conv(privateKeyHex, {in: 'hex', out: 'bytes'});
+            arr = new Uint8Array(arr);
+            T (arr instanceof Uint8Array);
+            EQ (coinstring(version, arr), wif);
+          })
+        })
+
         it('coinstring should generate the WIF', function() {
           EQ (coinstring(version, privateKeyHexBuf), wif);
           EQ (coinstring(version, privateKeyHexCompressedBuf), wifCompressed);

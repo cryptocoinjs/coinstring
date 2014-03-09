@@ -24,7 +24,7 @@ There are three functions in this module.
 Used to convert either a hash160 or private key into an address or wallet import format string respectively.
 
 - **version**: Is an integer representing the version. See below for more information.
-- **bytes**: A `Buffer` of bytes, either the hash160 or private key.
+- **bytes**: A `Buffer`, `Array`, or `Uint8Array` of bytes, either the hash160 or private key.
 
 
 #### decode(version, str)
