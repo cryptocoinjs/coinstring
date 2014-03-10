@@ -1,3 +1,8 @@
+0.2.0 / 2014-03-10
+------------------
+* changed input to decode, made `version` optional
+* changed output to decode, returns an object with the properties `version` and `bytes`
+
 0.1.0 / 2014-03-10
 ------------------
 * added browser tests
