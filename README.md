@@ -27,11 +27,11 @@ Used to convert either a hash160 or private key into an address or wallet import
 - **bytes**: A `Buffer`, `Array`, or `Uint8Array` of bytes, either the hash160 or private key.
 
 
-#### decode(version, str)
+#### decode([version], str)
 
 It is the inverse of the `coinstring()` function i.e. it converts the address or wallet import format into a `Buffer` of bytes. It
 throws if the address or wallet import format is not valid. Not valid means that the version doesn't match, or the checksum is
-incorrect.
+incorrect. Returns an object with the follow properites `version` and `bytes`.
 
 - **version**: Is an integer representing the version. See below for more information.
 - **str**: A `string` that is either the wallet import format or public address.
@@ -138,7 +138,7 @@ var version = 0x080; //Bitcoin private key
 var fromBtcWif = coinstring.decode(version)
 
 //later in your program
-console.log(fromBtcWif(wif).toString('hex')); // => 51184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
+console.log(fromBtcWif(wif).bytes.toString('hex')); // => 51184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd
 ```
 
 #### Function to Validate Bitcoin Testnet Addresses

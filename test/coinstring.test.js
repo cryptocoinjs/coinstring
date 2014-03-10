@@ -35,8 +35,8 @@ describe('coinstring', function() {
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, address).toString('hex'), hash160);
-          EQ (coinstring.decode(version, addressCompressed).toString('hex'), hash160c);   
+          EQ (coinstring.decode(version, address).bytes.toString('hex'), hash160);
+          EQ (coinstring.decode(version, addressCompressed).bytes.toString('hex'), hash160c);   
         })
       })
 
@@ -71,8 +71,8 @@ describe('coinstring', function() {
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, wif).toString('hex'), privateKeyHex);
-          EQ (coinstring.decode(version, wifCompressed).toString('hex'), privateKeyHexCompressed);   
+          EQ (coinstring.decode(version, wif).bytes.toString('hex'), privateKeyHex);
+          EQ (coinstring.decode(version, wifCompressed).bytes.toString('hex'), privateKeyHexCompressed);   
         })
       })
     })
@@ -97,8 +97,8 @@ describe('coinstring', function() {
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, address).toString('hex'), hash160);
-          EQ (coinstring.decode(version, addressCompressed).toString('hex'), hash160c);   
+          EQ (coinstring.decode(version, address).bytes.toString('hex'), hash160);
+          EQ (coinstring.decode(version, addressCompressed).bytes.toString('hex'), hash160c);   
         })
       })
 
@@ -116,8 +116,8 @@ describe('coinstring', function() {
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, wif).toString('hex'), privateKeyHex);
-          EQ (coinstring.decode(version, wifCompressed).toString('hex'), privateKeyHexCompressed);   
+          EQ (coinstring.decode(version, wif).bytes.toString('hex'), privateKeyHex);
+          EQ (coinstring.decode(version, wifCompressed).bytes.toString('hex'), privateKeyHexCompressed);   
         })
       })
     })
@@ -153,7 +153,7 @@ describe('coinstring', function() {
     it('decode should partially be applied', function() {
       var btcWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
       var fromBtcWif = coinstring.decode(0x80);
-      EQ (fromBtcWif(btcWif).toString('hex'), privateKeyHex);
+      EQ (fromBtcWif(btcWif).bytes.toString('hex'), privateKeyHex);
     })
 
     it('validate should partially be applied', function() {
@@ -161,6 +161,17 @@ describe('coinstring', function() {
       var btcAddressValidator = coinstring.validate(0x0);
       T (btcAddressValidator(address));
       F (btcAddressValidator(address.toUpperCase()));
+    })
+  })
+
+  describe('- decode()', function() {
+    describe('> when version isnt passed', function() {
+      it('should still work', function() {
+        var wifCompressed = 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3';
+        var res = coinstring.decode(wifCompressed);
+        EQ (res.bytes.toString('hex'), privateKeyHexCompressed)
+        EQ (res.version, 0x80);
+      })
     })
   })
 })
