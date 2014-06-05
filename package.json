@@ -18,7 +18,8 @@
     "mochify": "^0.9.3",
     "coveralls": "^2.10.0",
     "mocha-lcov-reporter": "0.0.1",
-    "istanbul": "^0.2.10"
+    "istanbul": "^0.2.10",
+    "crypto-browserify": "^2.1.8"
   },
   "repository": {
     "url": "https://github.com/cryptocoinjs/coinstring",
@@ -26,8 +27,10 @@
   },
   "main": "./lib/coinstring.js",
   "dependencies": {
-    "bs58": "0.3.x",
-    "crypto-hashing": "~0.3.0"
+    "bs58": "^1.0.0"
+  },
+  "browser": {
+    "crypto": "crypto-browserify"
   },
   "scripts": {
     "test": "mocha --ui bdd",
