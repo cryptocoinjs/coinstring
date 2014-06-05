@@ -5,7 +5,7 @@ x.y.z / 2014-06-dd
 * removed `terst` per http://cryptocoinjs.com/about/contributing/#testing
 * removed `binstring` from dev deps
 * added travis ci
-* 
+* added coveralls
 
 0.2.0 / 2014-03-10
 ------------------
