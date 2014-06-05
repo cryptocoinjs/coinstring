@@ -1,7 +1,7 @@
 coinstring
 ==========
 
-coinstring is a JavaScript component that is fully compatible with Node.js and the browser. It's used to generate relevant addresses and wallet import formats used by various crypto currencies.
+JavaScript component that's used to generate relevant addresses and wallet import formats used by various crypto currencies.
 
 **Note:** It's an experimental functional replacement for https://github.com/cryptocoinjs/btc-address
 

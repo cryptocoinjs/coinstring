@@ -1,3 +1,7 @@
+x.y.z / 2014-06-dd
+------------------
+* upgraded `mochify` for dev deps
+
 0.2.0 / 2014-03-10
 ------------------
 * changed input to decode, made `version` optional
