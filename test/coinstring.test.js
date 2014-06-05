@@ -1,7 +1,7 @@
+var assert = require('assert')
+
 var coinstring = require('../')
 var conv = require('binstring')
-
-require('terst')
 
 
 describe('coinstring', function() {
@@ -25,18 +25,18 @@ describe('coinstring', function() {
         var version = 0x0 //bitcoin public / pubkeyhash
 
         it('coinstring should generate the public address', function() {
-          EQ (coinstring(version, hash160Buf), address)
-          EQ (coinstring(version, hash160cBuf), addressCompressed)          
+          assert.equal(coinstring(version, hash160Buf), address)
+          assert.equal(coinstring(version, hash160cBuf), addressCompressed)          
         })
 
         it('validate should validate the address', function() {
-          T (coinstring.validate(version, address))
-          T (coinstring.validate(version, addressCompressed))  
+          assert(coinstring.validate(version, address))
+          assert(coinstring.validate(version, addressCompressed))  
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, address).bytes.toString('hex'), hash160)
-          EQ (coinstring.decode(version, addressCompressed).bytes.toString('hex'), hash160c)   
+          assert.equal(coinstring.decode(version, address).bytes.toString('hex'), hash160)
+          assert.equal(coinstring.decode(version, addressCompressed).bytes.toString('hex'), hash160c)   
         })
       })
 
@@ -46,8 +46,8 @@ describe('coinstring', function() {
         describe('> when input is an array to coinstring', function() {
           it('should generate the WIF', function() {
             var arr = conv(privateKeyHex, {in: 'hex', out: 'bytes'})
-            T (Array.isArray(arr))
-            EQ (coinstring(version, arr), wif)
+            assert(Array.isArray(arr))
+            assert.equal(coinstring(version, arr), wif)
           })
         })
 
@@ -55,24 +55,24 @@ describe('coinstring', function() {
           it('should generate the WIF', function() {
             var arr = conv(privateKeyHex, {in: 'hex', out: 'bytes'})
             arr = new Uint8Array(arr)
-            T (arr instanceof Uint8Array)
-            EQ (coinstring(version, arr), wif)
+            assert(arr instanceof Uint8Array)
+            assert.equal(coinstring(version, arr), wif)
           })
         })
 
         it('coinstring should generate the WIF', function() {
-          EQ (coinstring(version, privateKeyHexBuf), wif)
-          EQ (coinstring(version, privateKeyHexCompressedBuf), wifCompressed)
+          assert.equal(coinstring(version, privateKeyHexBuf), wif)
+          assert.equal(coinstring(version, privateKeyHexCompressedBuf), wifCompressed)
         })
 
         it('validate should validate the address', function() {
-          T (coinstring.validate(version, wif))
-          T (coinstring.validate(version, wifCompressed))  
+          assert(coinstring.validate(version, wif))
+          assert(coinstring.validate(version, wifCompressed))  
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, wif).bytes.toString('hex'), privateKeyHex)
-          EQ (coinstring.decode(version, wifCompressed).bytes.toString('hex'), privateKeyHexCompressed)   
+          assert.equal(coinstring.decode(version, wif).bytes.toString('hex'), privateKeyHex)
+          assert.equal(coinstring.decode(version, wifCompressed).bytes.toString('hex'), privateKeyHexCompressed)   
         })
       })
     })
@@ -87,18 +87,18 @@ describe('coinstring', function() {
         var version = 0x1E //dogecoin public / pubkeyhash
 
         it('coinstring should generate the public address', function() {
-          EQ (coinstring(version, hash160Buf), address)
-          EQ (coinstring(version, hash160cBuf), addressCompressed)          
+          assert.equal(coinstring(version, hash160Buf), address)
+          assert.equal(coinstring(version, hash160cBuf), addressCompressed)          
         })
 
         it('validate should validate the address', function() {
-          T (coinstring.validate(version, address))
-          T (coinstring.validate(version, addressCompressed))  
+          assert(coinstring.validate(version, address))
+          assert(coinstring.validate(version, addressCompressed))  
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, address).bytes.toString('hex'), hash160)
-          EQ (coinstring.decode(version, addressCompressed).bytes.toString('hex'), hash160c)   
+          assert.equal(coinstring.decode(version, address).bytes.toString('hex'), hash160)
+          assert.equal(coinstring.decode(version, addressCompressed).bytes.toString('hex'), hash160c)   
         })
       })
 
@@ -106,18 +106,18 @@ describe('coinstring', function() {
         var version = 0x1E + 0x80 //dogecoin private key
 
         it('coinstring should generate the WIF', function() {
-          EQ (coinstring(version, privateKeyHexBuf), wif)
-          EQ (coinstring(version, privateKeyHexCompressedBuf), wifCompressed)
+          assert.equal(coinstring(version, privateKeyHexBuf), wif)
+          assert.equal(coinstring(version, privateKeyHexCompressedBuf), wifCompressed)
         })
 
         it('validate should validate the address', function() {
-          T (coinstring.validate(version, wif))
-          T (coinstring.validate(version, wifCompressed))  
+          assert(coinstring.validate(version, wif))
+          assert(coinstring.validate(version, wifCompressed))  
         })
 
         it('decode should parse the address and return the hash160', function() {
-          EQ (coinstring.decode(version, wif).bytes.toString('hex'), privateKeyHex)
-          EQ (coinstring.decode(version, wifCompressed).bytes.toString('hex'), privateKeyHexCompressed)   
+          assert.equal(coinstring.decode(version, wif).bytes.toString('hex'), privateKeyHex)
+          assert.equal(coinstring.decode(version, wifCompressed).bytes.toString('hex'), privateKeyHexCompressed)   
         })
       })
     })
@@ -128,18 +128,18 @@ describe('coinstring', function() {
       var address = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS"
       var wif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
 
-      F (coinstring.validate(0x0, address.toLowerCase()))
-      F (coinstring.validate(0x80, wif.toLowerCase()))
+      assert(!coinstring.validate(0x0, address.toLowerCase()))
+      assert(!coinstring.validate(0x80, wif.toLowerCase()))
     })
   
     it('decode should throw an exception', function() {
       var address = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS"
       var wif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
 
-      THROWS (function() { coinstring.decode(0x0, address.toLowerCase()) })
-      THROWS (function() { coinstring.decode(0x80, wif.toLowerCase()) })
-      THROWS (function() { coinstring.decode(0x1, address) })
-      THROWS (function() { coinstring.decode(0x2, wif) })
+      assert.throws(function() { coinstring.decode(0x0, address.toLowerCase()) })
+      assert.throws(function() { coinstring.decode(0x80, wif.toLowerCase()) })
+      assert.throws(function() { coinstring.decode(0x1, address) })
+      assert.throws(function() { coinstring.decode(0x2, wif) })
     })
   })
 
@@ -147,20 +147,20 @@ describe('coinstring', function() {
     it('coinstring should partially be applied', function() {
       var btcWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
       var toBtcWif = coinstring(0x80)
-      EQ (toBtcWif(privateKeyHexBuf), btcWif)
+      assert.equal(toBtcWif(privateKeyHexBuf), btcWif)
     })
 
     it('decode should partially be applied', function() {
       var btcWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
       var fromBtcWif = coinstring.decode(0x80)
-      EQ (fromBtcWif(btcWif).bytes.toString('hex'), privateKeyHex)
+      assert.equal(fromBtcWif(btcWif).bytes.toString('hex'), privateKeyHex)
     })
 
     it('validate should partially be applied', function() {
       var address = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS"
       var btcAddressValidator = coinstring.validate(0x0)
-      T (btcAddressValidator(address))
-      F (btcAddressValidator(address.toUpperCase()))
+      assert(btcAddressValidator(address))
+      assert(!btcAddressValidator(address.toUpperCase()))
     })
   })
 
@@ -169,8 +169,8 @@ describe('coinstring', function() {
       it('should still work', function() {
         var wifCompressed = 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3'
         var res = coinstring.decode(wifCompressed)
-        EQ (res.bytes.toString('hex'), privateKeyHexCompressed)
-        EQ (res.version, 0x80)
+        assert.equal(res.bytes.toString('hex'), privateKeyHexCompressed)
+        assert.equal(res.version, 0x80)
       })
     })
   })

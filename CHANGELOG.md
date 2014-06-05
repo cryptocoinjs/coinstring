@@ -2,7 +2,7 @@ x.y.z / 2014-06-dd
 ------------------
 * upgraded `mochify` for dev deps
 * removed semicolons per http://cryptocoinjs.com/about/contributing/#semicolons
-* 
+* removed `terst` per http://cryptocoinjs.com/about/contributing/#testing
 
 0.2.0 / 2014-03-10
 ------------------
