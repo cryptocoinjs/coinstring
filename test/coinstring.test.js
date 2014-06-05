@@ -1,18 +1,16 @@
 var assert = require('assert')
 
 var coinstring = require('../')
-var conv = require('binstring')
-
 
 describe('coinstring', function() {
   var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
-  var privateKeyHexBuf = conv(privateKeyHex, {in: 'hex', out: 'buffer'})
+  var privateKeyHexBuf = new Buffer(privateKeyHex, 'hex')
   var privateKeyHexCompressed = privateKeyHex + "01" //<--- compression involves appending 0x01 to end
-  var privateKeyHexCompressedBuf = conv(privateKeyHexCompressed, {in: 'hex', out: 'buffer'})
+  var privateKeyHexCompressedBuf = new Buffer(privateKeyHexCompressed, 'hex')
   var hash160 = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8" //hash representing uncompressed
-  var hash160Buf = conv(hash160, {in: 'hex', out: 'buffer'})
+  var hash160Buf = new Buffer(hash160, 'hex')
   var hash160c = "a1c2f92a9dacbd2991c3897724a93f338e44bdc1" //hash representing compressed
-  var hash160cBuf = conv(hash160c, {in: 'hex', out: 'buffer'})
+  var hash160cBuf = new Buffer(hash160c, 'hex')
 
   describe('> when all arguments are passed', function() {
     describe('> when Bitcoin', function() {
@@ -45,7 +43,7 @@ describe('coinstring', function() {
 
         describe('> when input is an array to coinstring', function() {
           it('should generate the WIF', function() {
-            var arr = conv(privateKeyHex, {in: 'hex', out: 'bytes'})
+            var arr = [].slice.call(new Buffer(privateKeyHex, 'hex'))
             assert(Array.isArray(arr))
             assert.equal(coinstring(version, arr), wif)
           })
@@ -53,7 +51,7 @@ describe('coinstring', function() {
 
         describe('> when input is an Uint8Array to coinstring', function() {
           it('should generate the WIF', function() {
-            var arr = conv(privateKeyHex, {in: 'hex', out: 'bytes'})
+            var arr = [].slice.call(new Buffer(privateKeyHex, 'hex'))
             arr = new Uint8Array(arr)
             assert(arr instanceof Uint8Array)
             assert.equal(coinstring(version, arr), wif)
