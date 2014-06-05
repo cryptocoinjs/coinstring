@@ -1,9 +1,14 @@
 coinstring
 ==========
 
-JavaScript component that's used to generate relevant addresses and wallet import formats used by various crypto currencies.
+[![build status](https://secure.travis-ci.org/cryptocoinjs/coinstring.png)](http://travis-ci.org/cryptocoinjs/coinstring)
+[![Coverage Status](https://img.shields.io/coveralls/cryptocoinjs/coinstring.svg)](https://coveralls.io/r/cryptocoinjs/coinstring)
+[![Version](http://img.shields.io/npm/v/coinstring.svg)](https://www.npmjs.org/package/coinstring)
 
-**Note:** It's an experimental functional replacement for https://github.com/cryptocoinjs/btc-address
+
+JavaScript component that's used to generate relevant addresses, wallet import formats, BIP32 encodings, and base 58 check encoding
+used by various crypto currencies. Works in Node.js and the browser.
+
 
 
 Installation
