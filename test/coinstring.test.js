@@ -20,6 +20,14 @@ describe('coinstring', function() {
         assert.equal(cs.encode(inp, versionBuffer), f.base58)
       })
     })
+
+    describe('> when no version', function() {
+      it('should throw an error', function() {
+        assert.throws(function(arguments) {
+          cs.encode(new Buffer([1,2,3,4]))
+        },/must pass version/)
+      })
+    })
   })
 
   describe('+ decode()', function() {

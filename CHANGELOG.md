@@ -1,3 +1,7 @@
+1.0.1 / 2014-06-06
+------------------
+* throw error if `version` is not present for `encode()`
+
 1.0.0 / 2014-06-06
 ------------------
 * upgraded `mochify` for dev deps
