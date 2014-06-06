@@ -1,4 +1,4 @@
-x.y.z / 2014-06-dd
+1.0.0 / 2014-06-06
 ------------------
 * upgraded `mochify` for dev deps
 * removed semicolons per http://cryptocoinjs.com/about/contributing/#semicolons
