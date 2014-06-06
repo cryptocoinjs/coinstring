@@ -9,15 +9,15 @@ describe('coinstring', function() {
       it('should encode ' + f.description, function() {
         var inp = new Buffer(f.hex, 'hex')
         var version = parseInt(f.version, '16')
+        var versionBuffer = new Buffer(f.version.substr(2), 'hex') //chop off '0x'
 
-        if (f.version.length < 4)  {//skip bip32 here
+        if (f.version.length <= 4)  {//skip bip32 here
           assert.equal(cs.encode(inp, version), f.base58)
           assert.equal(cs.encode([].slice.call(inp), version), f.base58)
           assert.equal(cs.encode(new Uint8Array([].slice.call(inp)), version), f.base58)
         }
 
-        version = new Buffer(f.version.substr(2), 'hex') //chop off '0x'
-        assert.equal(cs.encode(inp, version), f.base58)
+        assert.equal(cs.encode(inp, versionBuffer), f.base58)
       })
     })
   })
@@ -29,7 +29,7 @@ describe('coinstring', function() {
         var bufferVersion = new Buffer(f.version.substr(2), 'hex')
         var res = {}
 
-        if (f.version.length < 4) { //skip bip32
+        if (f.version.length <= 4) { //skip bip32
           res = cs.decode(f.base58, version)
           assert.equal(res.payload.toString('hex'), f.hex)
           assert.equal(res.version.toString('hex'), f.version.substr(2))
@@ -61,8 +61,9 @@ describe('coinstring', function() {
       it('should validate ' + f.description, function() {
         var version = parseInt(f.version, '16')
         var versionBuffer = new Buffer(f.version.substr(2), 'hex')
-        if (f.version.length < 4) //skip bip 32
+        if (f.version.length <= 4) { //skip bip 32
           assert(cs.isValid(f.base58, version))
+        }
         assert(cs.isValid(f.base58, versionBuffer))
       })
     })
@@ -84,7 +85,7 @@ describe('coinstring', function() {
         var version = parseInt(f.version, '16')
         var versionBuffer = new Buffer(f.version.substr(2), 'hex')
 
-        if (f.version.length < 4) {//skip bip 32
+        if (f.version.length <= 4) {//skip bip 32
           var encode = cs.createEncoder(version)
           assert.equal(encode(inp), f.base58)
         }
@@ -102,7 +103,7 @@ describe('coinstring', function() {
         var version = parseInt(f.version, '16')
         var versionBuffer = new Buffer(f.version.substr(2), 'hex')
 
-        if (f.version.length < 4) { //skip bip 32
+        if (f.version.length <= 4) { //skip bip 32
           var decode = cs.createDecoder(version)
           assert.equal(decode(f.base58).payload.toString('hex'), f.hex)
         }
@@ -118,7 +119,7 @@ describe('coinstring', function() {
       it('should create a validator ' + f.description, function() {
         var version = parseInt(f.version, '16')
         var versionBuffer = new Buffer(f.version.substr(2), 'hex')
-        if (f.version.length < 4) { //skip bip 32
+        if (f.version.length <= 4) { //skip bip 32
           var isValid = cs.createValidator(version)
           assert(isValid(f.base58))
         }
@@ -134,7 +135,7 @@ describe('coinstring', function() {
           var version = parseInt(f.version, '16')
           var versionBuffer = new Buffer(f.version.substr(2), 'hex')
 
-          if (f.version.length < 4) { //skip bip 32
+          if (f.version.length <= 4) { //skip bip 32
             var isValid = cs.createValidator(version)
             assert(!isValid(f.base58))
           }
