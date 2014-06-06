@@ -15,6 +15,7 @@ x.y.z / 2014-06-dd
 * added method `createValidator()`
 * changed method signature of `validate(version, base58str)` to `validate(base58str, version)`
 * renamed method `validate()` to `isValid()`
+* renamed return from `decode()` object field `bytes` to `payload`
 
 0.2.0 / 2014-03-10
 ------------------

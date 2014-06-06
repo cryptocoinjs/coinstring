@@ -20,8 +20,8 @@ describe('coinstring', function() {
     fixtures.valid.forEach(function(f) {
       it('should decode ' + f.description, function() {
         var version = parseInt(f.versionHex, '16')
-        assert.equal(cs.decode(f.base58, version).bytes.toString('hex'), f.hex)
-        assert.equal(cs.decode(f.base58).bytes.toString('hex'), f.hex)
+        assert.equal(cs.decode(f.base58, version).payload.toString('hex'), f.hex)
+        assert.equal(cs.decode(f.base58).payload.toString('hex'), f.hex)
       })
     })
 
@@ -74,7 +74,7 @@ describe('coinstring', function() {
         var version = parseInt(f.versionHex, '16')
 
         var decode = cs.createDecoder(version)
-        assert.equal(decode(f.base58).bytes.toString('hex'), f.hex)
+        assert.equal(decode(f.base58).payload.toString('hex'), f.hex)
       })
     })
   })
