@@ -11,7 +11,8 @@ x.y.z / 2014-06-dd
 * `coinstring()` renamed to `cs.encode()`
 * added methods `createEncoder()` and `createDecoder()`
 * changed method signature of `encode(version, payload)` to `encode(payload,version)`
-
+* changed method signature of `decode(version, base58str)` to `decode(base58str, version)`
+* 
 
 0.2.0 / 2014-03-10
 ------------------
