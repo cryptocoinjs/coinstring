@@ -10,6 +10,7 @@ x.y.z / 2014-06-dd
 * removed `crypto-hashing` dep
 * `coinstring()` renamed to `cs.encode()`
 * added methods `createEncoder()` and `createDecoder()`
+* changed method signature of `encode(version, payload)` to `encode(payload,version)`
 
 
 0.2.0 / 2014-03-10

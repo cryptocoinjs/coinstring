@@ -9,9 +9,9 @@ describe('coinstring', function() {
       it('should encode ' + f.description, function() {
         var inp = new Buffer(f.hex, 'hex')
         var version = parseInt(f.versionHex, '16')
-        assert.equal(cs.encode(version, inp), f.base58)
-        assert.equal(cs.encode(version, [].slice.call(inp)), f.base58)
-        assert.equal(cs.encode(version, new Uint8Array([].slice.call(inp))), f.base58)
+        assert.equal(cs.encode(inp, version), f.base58)
+        assert.equal(cs.encode([].slice.call(inp), version), f.base58)
+        assert.equal(cs.encode(new Uint8Array([].slice.call(inp)), version), f.base58)
       })
     })
   })
