@@ -27,48 +27,70 @@
     {
       "hex": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
       "base58": "6JGLNEiEYR6pFGq84gwceHWYLcyKaLWzaymVajjCPPUEGAR2MTT",
-      "version": "0x9E",
+      "version": "0x9e",
       "description": "dogecoin private non-compressed key / wallet import format"
     },
     {
       "hex": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd01",
       "base58": "QPCgUjWzmfNfXzsQBHJ4KZsPKbmaz99PAyZP9ubFFpBBXWuSQh6n",
-      "version": "0x9E",
+      "version": "0x9e",
       "description": "dogecoin private compressed key / wallet import format"
     },
     {
       "hex": "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8",
       "base58": "DAcq9oJpZZAjr56RmF7Y5zmWboZWQ4HAsW",
-      "version": "0x1E",
+      "version": "0x1e",
       "description": "dogecoin hash160 / address"
     },
     {
       "hex": "a1c2f92a9dacbd2991c3897724a93f338e44bdc1",
       "base58": "DKtQu8G1cFQikveWy3qAkQTDMY8PKVU18Z",
-      "version": "0x1E",
+      "version": "0x1e",
       "description": "dogecoin hash160 / address"
+    },
+    {
+      "hex": "000000000000000000873dff81c02f525623fd1fe5167eac3a55a049de3d314bb42ee227ffed37d50800e8f32e723decf4051aefac8e2c93c9c5b214313817cdb01a1494b917c8436b35",
+      "base58": "xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi",
+      "version": "0x0488ade4",
+      "description": "bip 32 private address"
+    },
+    {
+      "hex": "000000000000000000873dff81c02f525623fd1fe5167eac3a55a049de3d314bb42ee227ffed37d5080339a36013301597daef41fbe593a02cc513d0b55527ec2df1050e2e8ff49c85c2",
+      "base58": "xpub661MyMwAqRbcFtXgS5sYJABqqG9YLmC4Q1Rdap9gSE8NqtwybGhePY2gZ29ESFjqJoCu1Rupje8YtGqsefD265TMg7usUDFdp6W1EGMcet8",
+      "version": "0x0488b21e",
+      "description": "bip 32 public address"
     }
   ],
   "invalid": [
     {
       "base58": "16ujcynbg9gtk4uq2f7yyebuifqczolmgs",
       "version": "0x00",
-      "description": "lowercase"
+      "description": "lowercase",
+      "match": "invalid base58 string"
     },
     {
       "base58": "5hx15hfgyep2cfpxsjke2fxjscvn5deiyoeggf6jzjgbtrnqfid",
       "version": "0x80",
-      "description": "lowercase"
+      "description": "lowercase",
+      "match": "invalid version"
     },
      {
-      "base58": "16ujcynbg9gtk4uq2f7yyebuifqczolmgs",
+      "base58": "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD",
       "version": "0x01",
-      "description": "invalid version"
+      "description": "invalid version",
+      "match": "invalid version"
     },
     {
       "base58": "5hx15hfgyep2cfpxsjke2fxjscvn5deiyoeggf6jzjgbtrnqfid",
       "version": "0x02",
-      "description": "invalid version"
+      "description": "invalid version",
+      "match": "invalid version"
+    },
+    {
+      "base58": "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTQzFWrw",
+      "version": "0x80",
+      "description": "invalid checksum",
+      "match": "invalid checksum"
     }
   ]
 }
