@@ -9,7 +9,7 @@ x.y.z / 2014-06-dd
 * upgraded `bs58` from `0.3.x` to `^1.0.0`
 * removed `crypto-hashing` dep
 * `coinstring()` renamed to `cs.encode()`
-
+* added methods `createEncoder()` and `createDecoder()`
 
 
 0.2.0 / 2014-03-10

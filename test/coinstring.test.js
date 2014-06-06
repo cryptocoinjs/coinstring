@@ -21,6 +21,7 @@ describe('coinstring', function() {
       it('should decode ' + f.description, function() {
         var version = parseInt(f.versionHex, '16')
         assert.equal(cs.decode(version, f.base58).bytes.toString('hex'), f.hex)
+        assert.equal(cs.decode(f.base58).bytes.toString('hex'), f.hex)
       })
     })
 
@@ -54,39 +55,26 @@ describe('coinstring', function() {
     })
   })
 
-  var privateKeyHex = fixtures.valid[0].hex
-  var privateKeyHexBuf = new Buffer(privateKeyHex, 'hex')
-  var privateKeyHexCompressed = privateKeyHex + "01" //<--- compression involves appending 0x01 to end
+  describe('+ createEncoder()', function() {
+    fixtures.valid.forEach(function(f) {
+      it('should create an encoder ' + f.description, function() {
+        var inp = new Buffer(f.hex, 'hex')
+        var version = parseInt(f.versionHex, '16')
 
-
-  describe('> when version is specified', function() {
-    it('coinstring should partially be applied', function() {
-      var btcWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
-      var toBtcWif = cs.encode(0x80)
-      assert.equal(toBtcWif(privateKeyHexBuf), btcWif)
-    })
-
-    it('decode should partially be applied', function() {
-      var btcWif = "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD"
-      var fromBtcWif = cs.decode(0x80)
-      assert.equal(fromBtcWif(btcWif).bytes.toString('hex'), privateKeyHex)
-    })
-
-    it('validate should partially be applied', function() {
-      var address = "16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS"
-      var btcAddressValidator = cs.validate(0x0)
-      assert(btcAddressValidator(address))
-      assert(!btcAddressValidator(address.toUpperCase()))
+        var encode = cs.createEncoder(version)
+        assert.equal(encode(inp), f.base58)
+      })
     })
   })
 
-  describe('- decode()', function() {
-    describe('> when version isnt passed', function() {
-      it('should still work', function() {
-        var wifCompressed = 'KwomKti1X3tYJUUMb1TGSM2mrZk1wb1aHisUNHCQXTZq5auC2qc3'
-        var res = cs.decode(wifCompressed)
-        assert.equal(res.bytes.toString('hex'), privateKeyHexCompressed)
-        assert.equal(res.version, 0x80)
+  describe('+ createDecoder()', function() {
+    fixtures.valid.forEach(function(f) {
+      it('should create a decoder ' + f.description, function() {
+        var inp = new Buffer(f.hex, 'hex')
+        var version = parseInt(f.versionHex, '16')
+
+        var decode = cs.createDecoder(version)
+        assert.equal(decode(f.base58).bytes.toString('hex'), f.hex)
       })
     })
   })
