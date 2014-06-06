@@ -5,6 +5,7 @@ coinstring
 [![Coverage Status](https://img.shields.io/coveralls/cryptocoinjs/coinstring.svg)](https://coveralls.io/r/cryptocoinjs/coinstring)
 [![Version](http://img.shields.io/npm/v/coinstring.svg)](https://www.npmjs.org/package/coinstring)
 
+[![browser support](https://ci.testling.com/cryptocoinjs/coinstring.png)](https://ci.testling.com/cryptocoinjs/coinstring)
 
 JavaScript component that's used to generate relevant addresses, wallet import formats, BIP32 encodings, and base 58 check encoding
 used by various crypto currencies. Works in Node.js and the browser.
