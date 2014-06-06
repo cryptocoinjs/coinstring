@@ -37,11 +37,11 @@ describe('coinstring', function() {
     })
   })
 
-  describe('+ validate()', function() {
+  describe('+ isValid()', function() {
     fixtures.valid.forEach(function(f) {
       it('should validate ' + f.description, function() {
         var version = parseInt(f.versionHex, '16')
-        assert(cs.validate(f.base58, version))
+        assert(cs.isValid(f.base58, version))
       })
     })
 
@@ -49,7 +49,7 @@ describe('coinstring', function() {
       fixtures.invalid.forEach(function(f) {
         it(f.description + ' should return false', function() {
           var version = parseInt(f.versionHex, '16')
-          assert(!cs.validate(f.base58, version))
+          assert(!cs.isValid(f.base58, version))
         })
       })
     })
