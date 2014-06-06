@@ -1,9 +1,9 @@
 var assert = require('assert')
-
 var cs = require('../')
+var fixtures = require('./fixtures/coinstring')
 
 describe('coinstring', function() {
-  var privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd"
+  var privateKeyHex = fixtures.valid[0].hex
   var privateKeyHexBuf = new Buffer(privateKeyHex, 'hex')
   var privateKeyHexCompressed = privateKeyHex + "01" //<--- compression involves appending 0x01 to end
   var privateKeyHexCompressedBuf = new Buffer(privateKeyHexCompressed, 'hex')

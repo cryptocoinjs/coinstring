@@ -1,0 +1,11 @@
+{
+	"valid": [
+    {
+      "hex": "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd",
+      "base58": "5Hx15HFGyep2CfPxsJKe2fXJsCVn5DEiyoeGGF6JZjGbTRnqfiD",
+      "versionHex": "00",
+      "description": "bitcoin private non-compressed key"
+    }
+
+  ]
+}
