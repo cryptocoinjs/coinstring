@@ -1,3 +1,11 @@
+2.0.0 / 2014-06-25
+------------------
+* changed `encode(payload, version)` to `encode(payload, [version])`
+* changed how `decode` works (**broke compatibility** hence major version bump)
+
+old version returned `{payload: ..., version: ...}`, this version now returns
+just `payload`, if `version` is passed into `decode`, it's trimmed off of `payload`
+
 1.0.1 / 2014-06-06
 ------------------
 * throw error if `version` is not present for `encode()`
