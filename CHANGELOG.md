@@ -1,3 +1,8 @@
+2.1.0 / 2014-12-16
+------------------
+- remove `browser` field, and `crypto-browserify` devDep
+- removed Makefile; replaced with npm scripts
+
 2.0.0 / 2014-06-25
 ------------------
 * changed `encode(payload, version)` to `encode(payload, [version])`
