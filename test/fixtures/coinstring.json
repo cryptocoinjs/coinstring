@@ -78,7 +78,7 @@
       "base58": "16ujcynbg9gtk4uq2f7yyebuifqczolmgs",
       "version": "0x00",
       "description": "lowercase",
-      "match": "invalid base58 string"
+      "match": "non-base58 character"
     },
     {
       "base58": "5hx15hfgyep2cfpxsjke2fxjscvn5deiyoeggf6jzjgbtrnqfid",
