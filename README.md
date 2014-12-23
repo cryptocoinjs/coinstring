@@ -14,6 +14,6 @@ addresses, but this module does work with BIP 32 addresses.
 
 Works in Node.js and the browser.
 
-Official documentation:
+### Official documentation:
 
 http://cryptocoinjs.com/modules/currency/coinstring/
