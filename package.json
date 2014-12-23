@@ -28,7 +28,7 @@
   },
   "main": "./lib/coinstring.js",
   "dependencies": {
-    "bs58": "^1.0.0"
+    "bs58": "^2.0.0"
   },
   "scripts": {
     "browser-test": "./node_modules/.bin/mochify --wd -R spec",

@@ -1,3 +1,7 @@
+2.2.0 / 2014-12-23
+------------------
+- `bs58` from `1.x` to `2.x` (decode returns `Array` instead of `Buffer`)
+
 2.1.0 / 2014-12-16
 ------------------
 - remove `browser` field, and `crypto-browserify` devDep
