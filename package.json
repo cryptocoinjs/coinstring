@@ -28,7 +28,8 @@
   },
   "main": "./lib/coinstring.js",
   "dependencies": {
-    "bs58": "^2.0.0"
+    "bs58": "^2.0.1",
+    "create-hash": "^1.1.1"
   },
   "scripts": {
     "browser-test": "mochify --wd -R spec",
