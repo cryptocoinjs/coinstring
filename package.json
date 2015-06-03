@@ -18,7 +18,7 @@
   "devDependencies": {
     "coveralls": "^2.10.0",
     "istanbul": "^0.2.10",
-    "mocha": "^1.20.1",
+    "mocha": "^2.2.5",
     "mocha-lcov-reporter": "0.0.1",
     "mochify": "^2.1.0"
   },
@@ -31,10 +31,10 @@
     "bs58": "^2.0.0"
   },
   "scripts": {
-    "browser-test": "./node_modules/.bin/mochify --wd -R spec",
+    "browser-test": "mochify --wd -R spec",
     "test": "mocha --ui bdd",
-    "unit": "./node_modules/.bin/mocha",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --reporter list test/*.js",
-    "coveralls": "npm run-script coverage && node ./node_modules/.bin/coveralls < coverage/lcov.info"
+    "unit": "mocha",
+    "coverage": "istanbul cover _mocha -- --reporter list test/*.js",
+    "coveralls": "npm run-script coverage && node coveralls < coverage/lcov.info"
   }
 }
