@@ -1,6 +1,6 @@
 {
   "name": "coinstring",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "license": "MIT",
   "description": "Create and parse crypto currency addresses and wallet import formats.",
   "keywords": [
